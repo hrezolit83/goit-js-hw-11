@@ -9,8 +9,8 @@ import "izitoast/dist/css/iziToast.min.css";
 
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-import {refs} from './pixabay-api';
-import {fetchImg} from './pixabay-api';
+import { refs } from './pixabay-api';
+import { fetchImg } from './pixabay-api';
 
 refs.userForm.addEventListener('submit', onFormSubmit);
 
