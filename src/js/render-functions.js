@@ -9,31 +9,9 @@ import "izitoast/dist/css/iziToast.min.css";
 
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-import { refs } from './pixabay-api';
-import { fetchImg } from './pixabay-api';
+import { refs } from '../main';
 
-refs.userForm.addEventListener('submit', onFormSubmit);
-
-  function onFormSubmit(event) {
-    event.preventDefault();
-    loaderOn();
-    refs.galleryList.innerHTML = '';
-    const userSearch = event.currentTarget.elements.input.value.trim();
-  
-    fetchImg(userSearch).then(makeGalleryItem).catch(onError).finally(loaderOff);
-  
-    refs.userForm.reset();
-  }
-
-  function loaderOn() {
-    refs.loader.classList.remove('hidden');
-  }
-  
-  function loaderOff() {
-    refs.loader.classList.add('hidden');
-  }
-
-  function makeGalleryItem(res) {
+export  function makeGalleryItem(res) {
     const result = res.hits.map(makeMarcup).join('');
   
     if (res.hits.length) {
@@ -68,11 +46,4 @@ refs.userForm.addEventListener('submit', onFormSubmit);
         </li>`;
   }
     
-    function onError() {
-        const MESSAGE = 'Sorry, there are no images matching your search query. Please try again!';
-
-        iziToast.error({
-        message: MESSAGE,
-        position: 'topRight',
-        });
-    }
+    
